@@ -22,7 +22,7 @@
 
 import UIKit
 
-@IBDesignable public class FontAwesomeSegmentedControl: UISegmentedControl {
+@IBDesignable public class FontAwesome4SegmentedControl: UISegmentedControl {
 
     @IBInspectable public var isFontAwesomeCSSCode: Bool = true
     @IBInspectable public var size: CGFloat = 22.0
@@ -40,20 +40,20 @@ import UIKit
         updateText {
             for i in 0 ..< numberOfSegments {
                 if let cssCode = titleForSegment(at: i) {
-                    setTitle(String.fontAwesomeIcon(code: cssCode), forSegmentAt: i)
+                    setTitle(String.fontAwesome4Icon(code: cssCode), forSegmentAt: i)
                 }
             }
         }
         updateFontAttributes { (state, font) in
             var attributes = titleTextAttributes(for: state) ?? [:]
-            attributes[NSAttributedStringKey.font] = font
+            attributes[NSAttributedString.Key.font] = font
             setTitleTextAttributes(attributes, for: state)
         }
     }
 
 }
 
-extension FontAwesomeSegmentedControl: FontAwesomeTextRepresentable {
+extension FontAwesome4SegmentedControl: FontAwesome4TextRepresentable {
 
     var isTextCSSCode: Bool {
         return isFontAwesomeCSSCode
@@ -63,7 +63,7 @@ extension FontAwesomeSegmentedControl: FontAwesomeTextRepresentable {
         return size
     }
 
-    static func supportedStates() -> [UIControlState] {
+    static func supportedStates() -> [UIControl.State] {
         if #available(iOS 9.0, *) {
             return [.normal, .highlighted, .disabled, .focused, .selected, .application, .reserved]
         } else {

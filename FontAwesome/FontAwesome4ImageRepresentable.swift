@@ -22,7 +22,7 @@
 
 import UIKit
 
-protocol FontAwesomeImageRepresentable: class {
+protocol FontAwesome4ImageRepresentable: class {
 
     typealias ImageConfig = (cssIconName: String, color: UIColor?, backgroundColor: UIColor?)
 
@@ -32,7 +32,7 @@ protocol FontAwesomeImageRepresentable: class {
     func createImages(configurationHandler: (_ image: UIImage?, _ index: Int) -> Void)
 }
 
-extension FontAwesomeImageRepresentable {
+extension FontAwesome4ImageRepresentable {
 
     func createImages(configurationHandler: (_ image: UIImage?, _ index: Int) -> Void) {
         let imgSize = imageSizeForAspectRatio()
@@ -43,13 +43,13 @@ extension FontAwesomeImageRepresentable {
     }
 
     private func createImage(config: ImageConfig, size: CGSize) -> UIImage? {
-        return UIImage.fontAwesomeIcon(code: config.cssIconName,
+        return UIImage.fontAwesome4Icon(code: config.cssIconName,
                                        textColor: config.color ?? .black,
                                        size: size,
                                        backgroundColor: config.backgroundColor ?? .clear)
     }
 
     private func imageSizeForAspectRatio() -> CGSize {
-        return CGSize(width: imageWidth, height: imageWidth / FontAwesomeConfig.fontAspectRatio)
+        return CGSize(width: imageWidth, height: imageWidth / FontAwesome4Config.fontAspectRatio)
     }
 }

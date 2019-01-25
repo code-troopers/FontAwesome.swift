@@ -22,7 +22,7 @@
 
 import UIKit
 
-@IBDesignable public class FontAwesomeTabBarItem: UITabBarItem {
+@IBDesignable public class FontAwesome4TabBarItem: UITabBarItem {
 
     @IBInspectable public var iconName: String = "fa-square-o"
     @IBInspectable public var selectedIconName: String = "fa-square"
@@ -49,7 +49,7 @@ import UIKit
 
 }
 
-extension FontAwesomeTabBarItem: FontAwesomeImageRepresentable {
+extension FontAwesome4TabBarItem: FontAwesome4ImageRepresentable {
 
     var imageWidth: CGFloat {
         return size

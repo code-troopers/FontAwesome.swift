@@ -22,7 +22,7 @@
 
 /// An enumaration of FontAwesome icon names.
 // swiftlint:disable file_length type_body_length
-public enum FontAwesome: String {
+public enum FontAwesome4: String {
     case fiveHundredPixels = "\u{f26e}"
     case addressBook = "\u{f2b9}"
     case addressBookO = "\u{f2ba}"
@@ -799,8 +799,8 @@ public enum FontAwesome: String {
     ///
     /// - parameter code: The preferred icon name.
     /// - returns: FontAwesome icon.
-    public static func fromCode(_ code: String) -> FontAwesome? {
-        guard let raw = FontAwesomeIcons[code], let icon = FontAwesome(rawValue: raw) else {
+    public static func fromCode(_ code: String) -> FontAwesome4? {
+        guard let raw = FontAwesome4Icons[code], let icon = FontAwesome4(rawValue: raw) else {
             return nil
         }
         return icon
@@ -809,7 +809,7 @@ public enum FontAwesome: String {
 
 /// An array of FontAwesome icon codes.
 // swiftlint:disable identifier_name
-public let FontAwesomeIcons: [String : String] = [
+public let FontAwesome4Icons: [String : String] = [
     "fa-500px": "\u{f26e}",
     "fa-adjust": "\u{f042}",
     "fa-adn": "\u{f170}",

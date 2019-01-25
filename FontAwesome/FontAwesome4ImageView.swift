@@ -1,4 +1,4 @@
-// FontAwesomeStateRequirement.swift
+// FontAwesomeImageView.swift
 //
 // Copyright (c) 2017 Maik639
 //
@@ -22,8 +22,37 @@
 
 import UIKit
 
-protocol FontAwesomeStateRequirement: class {
+@IBDesignable public class FontAwesome4ImageView: UIImageView {
 
-    static func supportedStates() -> [UIControlState]
+    @IBInspectable public var cssCode: String = "fa-square-o"
+    @IBInspectable public var imageColor: UIColor = .black
+    @IBInspectable public var imageBackgroundColor: UIColor = .clear
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        useFontAwesomeImage()
+    }
+
+    public override func prepareForInterfaceBuilder() {
+        useFontAwesomeImage()
+    }
+
+    private func useFontAwesomeImage() {
+        createImages { (img, _) in
+            image = img
+        }
+    }
+
+}
+
+extension FontAwesome4ImageView: FontAwesome4ImageRepresentable {
+
+    var imageWidth: CGFloat {
+        return frame.width
+    }
+
+    var imageConfigs: [ImageConfig] {
+        return [(cssCode, imageColor, imageBackgroundColor)]
+    }
 
 }

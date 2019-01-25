@@ -22,17 +22,17 @@
 
 import UIKit
 
-protocol FontAwesomeTextRepresentable : FontAwesomeStateRequirement {
+protocol FontAwesome4TextRepresentable : FontAwesome4StateRequirement {
     
     var textSize: CGFloat { get }
     var isTextCSSCode: Bool { get }
 
     func updateText(_ updateTextBlock: () -> Void)
-    func updateFontAttributes(forStates stateBlock: (UIControlState, UIFont) -> Void)
+    func updateFontAttributes(forStates stateBlock: (UIControl.State, UIFont) -> Void)
 
 }
 
-extension FontAwesomeTextRepresentable {
+extension FontAwesome4TextRepresentable {
 
     public func updateText(_ updateTextBlock: () -> Void) {
         guard isTextCSSCode else {
@@ -42,9 +42,9 @@ extension FontAwesomeTextRepresentable {
         updateTextBlock()
     }
 
-    public func updateFontAttributes(forStates stateBlock: (UIControlState, UIFont) -> Void) {
+    public func updateFontAttributes(forStates stateBlock: (UIControl.State, UIFont) -> Void) {
         let states = type(of: self).supportedStates()
-        let font = UIFont.fontAwesome(ofSize: textSize)
+        let font = UIFont.fontAwesome4(ofSize: textSize)
 
         for state in states {
             stateBlock(state, font)

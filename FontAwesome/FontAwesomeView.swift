@@ -23,12 +23,12 @@
 import UIKit
 
 /// A view for FontAwesome icons.
-@IBDesignable public class FontAwesomeView: UIView {
+@IBDesignable public class FontAwesome4View: UIView {
 
     @IBInspectable
     public var iconCode: String = "" {
         didSet {
-            self.iconView.text = String.fontAwesomeIcon(code: iconCode)
+            self.iconView.text = String.fontAwesome4Icon(code: iconCode)
         }
     }
 
@@ -52,7 +52,7 @@ import UIKit
     func setupViews() {
         // Fits icon in the view
         self.iconView.textAlignment = NSTextAlignment.center
-        self.iconView.text = String.fontAwesomeIcon(code: self.iconCode)
+        self.iconView.text = String.fontAwesome4Icon(code: self.iconCode)
         self.iconView.textColor = self.tintColor
         self.addSubview(iconView)
     }
@@ -64,7 +64,7 @@ import UIKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.clipsToBounds = true
-        self.iconView.font = UIFont.fontAwesome(ofSize: bounds.size.width < bounds.size.height ? bounds.size.width : bounds.size.height)
+        self.iconView.font = UIFont.fontAwesome4(ofSize: bounds.size.width < bounds.size.height ? bounds.size.width : bounds.size.height)
         self.iconView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: bounds.size.width, height: bounds.size.height))
     }
 }
